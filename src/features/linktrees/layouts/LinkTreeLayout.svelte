@@ -11,26 +11,24 @@
 
   $: profile = $usersStore.profile;
 
-  // 1. Hanya fetch jika profile belum ada di store
-onMount(() => {
-  const authToken = apiHelper.getAccessToken();
-  if (authToken) {
-    if (!$usersStore.profile) {
+  // 1. Jalankan sekali untuk mengecek apakah pengguna sudah login
+  onMount(() => {
+    const authToken = apiHelper.getAccessToken();
+    if (authToken) {
       usersStore.asyncSetProfile();
+    } else {
+      navigate("/auth/login");
     }
-  } else {
-    navigate("/auth/login");
-  }
-});
+  });
 
-// 2. Baca langsung dari store (tidak pakai variabel lokal yang bisa stale)
-$: if ($usersStore.isProfile) {
-  usersStore.setIsProfile(false);
-  if (!$usersStore.profile) {
-    apiHelper.putAccessToken("");
-    navigate("/auth/login");
+  // 2. Jika proses pengambilan profil selesai dan tidak ada profile, arahkan ke login
+  $: if ($usersStore.isProfile) {
+    usersStore.setIsProfile(false);
+    if (!profile) {
+      apiHelper.putAccessToken("");
+      navigate("/auth/login");
+    }
   }
-}
 
   // 3. Efek setelah logout
   $: if ($authStore.isAuthLogout) {
