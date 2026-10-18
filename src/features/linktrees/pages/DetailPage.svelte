@@ -177,7 +177,7 @@
             type="button"
             data-testid="add-item-btn"
             on:click={openAddItem}
-            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-white bg-sky-600 hover:bg-sky-700 rounded-xl shadow-md shadow-sky-600/25 transition-all"
+            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-white bg-sky-700 hover:bg-sky-800 rounded-xl shadow-md shadow-sky-600/25 transition-all"
           >
             <Plus size={16} />
             Tambah Item

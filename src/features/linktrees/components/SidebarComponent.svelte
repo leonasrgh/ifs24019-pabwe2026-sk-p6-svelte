@@ -79,7 +79,7 @@
       <div class="space-y-6">
         <div>
           <p
-            class="px-3 text-xs font-bold uppercase tracking-wider text-slate-400"
+            class="px-3 text-xs font-bold uppercase tracking-wider text-slate-600"
           >
             Menu Utama
           </p>
